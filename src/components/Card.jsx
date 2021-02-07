@@ -7,8 +7,8 @@ import { ASPECT_RATIO } from "../constants/constants";
 
 const Card = ({ cardId }) => {
   const cardStyles = {
-    minHeight: (useCurrentHeightHook() * 0.25) / ASPECT_RATIO,
-    minWidth: useCurrentWidthHook() * 0.166 * ASPECT_RATIO,
+    height: (useCurrentHeightHook() * 0.25) / ASPECT_RATIO / 2,
+    width: (useCurrentWidthHook() * 0.166 * ASPECT_RATIO) / 2,
   };
   return (
     <div className="Card" key={cardId} style={cardStyles}>
