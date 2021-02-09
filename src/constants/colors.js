@@ -1,0 +1,12 @@
+export const BLACK = "#000000";
+export const BLUE = " #0000ff";
+export const CRIMSON = "#dc143c";
+export const CYAN = " #00ffff";
+export const FUCHSIA = "#ff00ff";
+export const GREEN = " #008000";
+export const OLIVE = "#808000";
+export const ORANGE = "#ffa500";
+export const PURPLE = "#800080";
+export const TEAL = "#008080";
+export const WHITE = "#ffffff";
+export const YELLOW = "#ffff00";

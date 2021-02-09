@@ -1,10 +1,13 @@
-import { DEFAULT_ACTION_RENAME_THIS } from "../../constants/actionTypes";
+import { IS_CARD_MATCH_FOUND } from "../../constants/actionTypes";
+import { initializeCards } from "../../helpers/helpers";
 
-const initialState = {};
+const initialState = {
+  cards: initializeCards(),
+};
 
 function gameReducer(state, action) {
   switch (action.type) {
-    case DEFAULT_ACTION_RENAME_THIS: {
+    case IS_CARD_MATCH_FOUND: {
       const newState = { ...state };
 
       return newState;

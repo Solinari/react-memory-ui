@@ -1,6 +1,6 @@
-import { DEFAULT_ACTION_RENAME_THIS } from "../../constants/actionTypes";
+import { IS_CARD_MATCH_FOUND } from "../../constants/actionTypes";
 
 export const defaultActionRenameThis = (payload) => ({
-  type: DEFAULT_ACTION_RENAME_THIS,
+  type: IS_CARD_MATCH_FOUND,
   payload: payload,
 });
