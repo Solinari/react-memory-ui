@@ -1,1 +1,1 @@
-export const IS_CARD_MATCH_FOUND = "IS_CARD_MATCH_FOUND";
+export const FLIP_CARD_FACE = "FLIP_CARD_FACE";

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { connect } from "react-redux";
 import "./Game.css";
 import Card from "./Card";
@@ -10,7 +9,14 @@ const Game = ({ cards }) => {
   return (
     <div className="Game">
       {cards.map((card, i) => {
-        return <Card cardColor={card.value} cardId={`${i}`} key={`${i}`} />;
+        return (
+          <Card
+            cardColor={card.value}
+            cardId={i}
+            isFlipped={card.isFlipped}
+            key={i}
+          />
+        );
       })}
     </div>
   );
@@ -21,6 +27,7 @@ Game.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
+      isFlipped: PropTypes.bool.isRequired,
     }).isRequired
   ).isRequired,
 };

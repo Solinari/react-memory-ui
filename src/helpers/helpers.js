@@ -20,6 +20,7 @@ export function initializeCards() {
     const currentCard = {
       name: color,
       value: colors[color],
+      isFlipped: false,
     };
     cards.push(currentCard);
     cards.push(currentCard);

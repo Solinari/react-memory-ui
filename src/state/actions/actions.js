@@ -1,6 +1,6 @@
-import { IS_CARD_MATCH_FOUND } from "../../constants/actionTypes";
+import { FLIP_CARD_FACE } from "../../constants/actionTypes";
 
-export const defaultActionRenameThis = (payload) => ({
-  type: IS_CARD_MATCH_FOUND,
-  payload: payload,
+export const flipCardFace = (payload) => ({
+  type: FLIP_CARD_FACE,
+  payload,
 });

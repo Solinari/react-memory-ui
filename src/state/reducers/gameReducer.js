@@ -1,16 +1,26 @@
-import { IS_CARD_MATCH_FOUND } from "../../constants/actionTypes";
+import { FLIP_CARD_FACE } from "../../constants/actionTypes";
 import { initializeCards } from "../../helpers/helpers";
 
 const initialState = {
   cards: initializeCards(),
 };
 
+function handleCardFlip(state, payload) {
+  let cards = [...state.cards];
+
+  const { cardId, isFlipped } = payload;
+
+  cards[cardId] = { ...cards[cardId], isFlipped: !isFlipped };
+
+  const newState = { ...state, cards };
+
+  return newState;
+}
+
 function gameReducer(state, action) {
   switch (action.type) {
-    case IS_CARD_MATCH_FOUND: {
-      const newState = { ...state };
-
-      return newState;
+    case FLIP_CARD_FACE: {
+      return handleCardFlip(state, action.payload);
     }
     default:
       return initialState;

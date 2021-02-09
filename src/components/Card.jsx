@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import "./Card.css";
 import useCurrentWidthHook from "../hooks/useCurrentWidthHook";
 import useCurrentHeightHook from "../hooks/useCurrentHeightHook";
 import { ASPECT_RATIO } from "../constants/constants";
+import { flipCardFace } from "../state/actions/actions";
 
-const Card = ({ cardColor, cardId }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+const Card = ({ cardColor, cardId, flipCardFace, isFlipped }) => {
   const cardStyles = {
     backgroundColor: isFlipped ? cardColor : "#8b4513",
     height: (useCurrentHeightHook() * 0.25) / ASPECT_RATIO / 2,
@@ -14,7 +16,7 @@ const Card = ({ cardColor, cardId }) => {
   };
 
   function onCardClicked() {
-    setIsFlipped(!isFlipped);
+    flipCardFace({ cardId, isFlipped });
   }
   return (
     <div
@@ -29,12 +31,23 @@ const Card = ({ cardColor, cardId }) => {
 };
 
 Card.propTypes = {
-  cardId: PropTypes.string,
+  cardId: PropTypes.number.isRequired,
   cardColor: PropTypes.string.isRequired,
+  flipCardFace: PropTypes.func,
+  isFlipped: PropTypes.bool.isRequired,
 };
 
 Card.defaultProps = {
-  cardId: null,
+  flipCardFace: () => {},
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      flipCardFace,
+    },
+    dispatch
+  );
+};
+
+export default connect(null, mapDispatchToProps)(Card);
