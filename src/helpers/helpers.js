@@ -17,7 +17,6 @@ function shuffleCards(cards) {
 export function initializeCards() {
   let cards = [];
   Object.keys(colors).forEach((color) => {
-    console.log(`${color} ${colors[color]}`);
     const currentCard = {
       name: color,
       value: colors[color],
