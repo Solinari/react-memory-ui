@@ -21,6 +21,7 @@ export function initializeCards() {
       name: color,
       value: colors[color],
       isFlipped: false,
+      isMatched: false,
     };
     cards.push(currentCard);
     cards.push(currentCard);

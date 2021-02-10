@@ -14,6 +14,7 @@ const Game = ({ cards }) => {
             cardColor={card.value}
             cardId={i}
             isFlipped={card.isFlipped}
+            isMatched={card.isMatched}
             key={i}
           />
         );
@@ -28,6 +29,7 @@ Game.propTypes = {
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
       isFlipped: PropTypes.bool.isRequired,
+      isMatched: PropTypes.bool.isRequired,
     }).isRequired
   ).isRequired,
 };

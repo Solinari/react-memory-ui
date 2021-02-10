@@ -6,17 +6,27 @@ import "./Card.css";
 import useCurrentWidthHook from "../hooks/useCurrentWidthHook";
 import useCurrentHeightHook from "../hooks/useCurrentHeightHook";
 import { ASPECT_RATIO } from "../constants/constants";
-import { flipCardFace } from "../state/actions/actions";
+import { flipCardFace, updateGame } from "../state/actions/actions";
 
-const Card = ({ cardColor, cardId, flipCardFace, isFlipped }) => {
+const Card = ({
+  cardColor,
+  cardId,
+  flipCardFace,
+  isFlipped,
+  isMatched,
+  updateGame,
+}) => {
   const cardStyles = {
     backgroundColor: isFlipped ? cardColor : "#8b4513",
+    opacity: isMatched ? 0 : 1,
+    cursor: isMatched ? "none" : "pointer",
     height: (useCurrentHeightHook() * 0.25) / ASPECT_RATIO / 2,
     width: (useCurrentWidthHook() * 0.166 * ASPECT_RATIO) / 2,
   };
 
   function onCardClicked() {
     flipCardFace({ cardId, isFlipped });
+    updateGame();
   }
   return (
     <div
@@ -35,16 +45,20 @@ Card.propTypes = {
   cardColor: PropTypes.string.isRequired,
   flipCardFace: PropTypes.func,
   isFlipped: PropTypes.bool.isRequired,
+  isMatched: PropTypes.bool.isRequired,
+  updateGame: PropTypes.func,
 };
 
 Card.defaultProps = {
   flipCardFace: () => {},
+  updateGame: () => {},
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       flipCardFace,
+      updateGame,
     },
     dispatch
   );
