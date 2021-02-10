@@ -5,7 +5,14 @@ import { connect } from "react-redux";
 import "./Card.css";
 import useCurrentWidthHook from "../hooks/useCurrentWidthHook";
 import useCurrentHeightHook from "../hooks/useCurrentHeightHook";
-import { ASPECT_RATIO } from "../constants/constants";
+import {
+  ASPECT_RATIO,
+  AUTO,
+  CLICK_DELAY,
+  FACE_DOWN,
+  WAIT,
+  POINTER,
+} from "../constants/constants";
 import {
   flipCardFace,
   updateGame,
@@ -23,9 +30,9 @@ const Card = ({
   setIsUpdating,
 }) => {
   const cardStyles = {
-    backgroundColor: isFlipped ? cardColor : "#8b4513",
+    backgroundColor: isFlipped ? cardColor : FACE_DOWN,
     opacity: isMatched ? 0 : 1,
-    cursor: isMatched ? "auto" : isUpdating ? "wait" : "pointer",
+    cursor: isMatched ? AUTO : isUpdating ? WAIT : POINTER,
     height: (useCurrentHeightHook() * 0.25) / ASPECT_RATIO / 2,
     width: (useCurrentWidthHook() * 0.166 * ASPECT_RATIO) / 2,
   };
@@ -36,7 +43,7 @@ const Card = ({
     setTimeout(() => {
       updateGame();
       setIsUpdating({ isUpdating: false });
-    }, 333);
+    }, CLICK_DELAY);
   }
   return (
     <div

@@ -14,9 +14,9 @@
 
 #### navigate to: `http:/localhost:6006` to view [Storybook](https://storybook.js.org/)
 
-## This application demo also can use [Docker](https://www.docker.com/) to build and run the Front and Back End applications, as well as Storybook:
-
 ---
+
+### This application demo also can use [Docker](https://www.docker.com/) to build and run the Front end applications, as well as Storybook:
 
 ### Build:
 
