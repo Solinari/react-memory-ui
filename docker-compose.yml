@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  react-memory-ui:
+    build:
+      context: ./ui
+    ports:
+      - "3000:3000"
+    container_name: react-memory-ui
+    stdin_open: true
+    volumes:
+      - ./ui:/usr/src/app/ui
+      - /usr/src/app/ui/node_modules
+
+  storybook-ui:
+    build:
+      context: ./ui
+    command: npm run storybook
+    ports:
+      - "6006:6006"
+    container_name: storybook-ui
+    stdin_open: true
+    volumes:
+      - ./ui:/usr/src/app/ui
+      - /usr/src/app/ui/node_modules
