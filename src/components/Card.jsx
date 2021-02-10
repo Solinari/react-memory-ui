@@ -36,7 +36,7 @@ const Card = ({
     setTimeout(() => {
       updateGame();
       setIsUpdating({ isUpdating: false });
-    }, 1000);
+    }, 333);
   }
   return (
     <div

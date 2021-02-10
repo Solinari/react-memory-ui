@@ -36,7 +36,7 @@ Game.propTypes = {
   isUpdating: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   const cards = getCards(state);
   const isUpdating = getIsUpdating(state);
   return { cards, isUpdating };
