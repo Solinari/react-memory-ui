@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./Game.css";
 import Card from "./Card";
-import { getCards } from "../state/selectors/selectors";
+import { getCards, getIsUpdating } from "../state/selectors/selectors";
 
-const Game = ({ cards }) => {
+const Game = ({ cards, isUpdating }) => {
   return (
     <div className="Game">
       {cards.map((card, i) => {
@@ -15,6 +15,7 @@ const Game = ({ cards }) => {
             cardId={i}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}
+            isUpdating={isUpdating}
             key={i}
           />
         );
@@ -32,11 +33,13 @@ Game.propTypes = {
       isMatched: PropTypes.bool.isRequired,
     }).isRequired
   ).isRequired,
+  isUpdating: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const cards = getCards(state);
-  return { cards };
+  const isUpdating = getIsUpdating(state);
+  return { cards, isUpdating };
 };
 
 export default connect(mapStateToProps, null)(Game);

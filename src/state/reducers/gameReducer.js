@@ -1,10 +1,15 @@
-import { FLIP_CARD_FACE, UPDATE_GAME } from "../../constants/actionTypes";
+import {
+  FLIP_CARD_FACE,
+  UPDATE_GAME,
+  SET_IS_UPDATING,
+} from "../../constants/actionTypes";
 import { initializeCards } from "../../helpers/helpers";
 
 const initialState = {
   cards: initializeCards(),
   firstCard: null,
   secondCard: null,
+  isUpdating: false,
 };
 
 function handleCardFlip(state, payload) {
@@ -62,11 +67,21 @@ function handleGameUpdate(state) {
       };
     }
 
-    const newState = { ...state, cards, firstCard: null, secondCard: null };
+    const newState = {
+      ...state,
+      cards,
+      firstCard: null,
+      secondCard: null,
+    };
     return newState;
   }
 
   return state;
+}
+
+function handleIsUpdating(state, payload) {
+  const newState = { ...state, isUpdating: payload.isUpdating };
+  return newState;
 }
 
 function gameReducer(state, action) {
@@ -76,6 +91,9 @@ function gameReducer(state, action) {
     }
     case UPDATE_GAME: {
       return handleGameUpdate(state);
+    }
+    case SET_IS_UPDATING: {
+      return handleIsUpdating(state, action.payload);
     }
     default:
       return initialState;

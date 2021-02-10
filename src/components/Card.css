@@ -3,4 +3,8 @@
   margin: 0.25em;
   border-radius: 0.25em;
   border: 0.438em solid #3b3d3d;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
 }
