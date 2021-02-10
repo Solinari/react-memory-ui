@@ -44,9 +44,7 @@ const Card = ({
       key={cardId}
       style={cardStyles}
       onClick={isMatched || isUpdating ? () => {} : onCardClicked}
-    >
-      {`${isFlipped ? "Front" : "Back"}`}
-    </div>
+    />
   );
 };
 
